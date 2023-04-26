@@ -2,8 +2,8 @@ import proplot as plot
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = ['new ReaxFF','Origin ReaxFF','LDA','GGA','HSE']
-x2 = ['new ReaxFF','Origin ReaxFF','LDA','GGA']
+x = ['new ReaxFF','ReaxFF','LDA','GGA','HSE']
+x2 = ['new ReaxFF','ReaxFF','LDA','GGA']
 y1 = [131.01,176.32,118,129,134.60]
 y2 = [151.21,205.08,130,140,145]
 y3 = [0.365,0.39,0.31,0.29]
@@ -18,23 +18,25 @@ ax1, ax2,ax3,ax4 = axs
 
 
 ax1.bar( x2, y3, color=colors1, lw=2, alpha=0.8)
-ax1.format(fontsize=14)
+ax1.format(fontsize=18)
 #ax1.set_xlabel('x', fontsize=20)
 ax1.set_ylabel("Possion's ratio", fontsize=20)
 
+
 ax2.bar( x2, y4, color=colors1, lw=2, alpha=0.8)
-ax2.format(fontsize=14)
+ax2.format(fontsize=18)
 #ax1.set_xlabel('x', fontsize=20)
-ax2.set_ylabel('Ys/(N/m)', fontsize=20)
+ax2.set_ylabel('c22/(N/m)', fontsize=20)
+
 
 ax3.bar( x, y1, color=colors, lw=2, alpha=0.8)
-ax3.format(fontsize=14)
+ax3.format(fontsize=18)
 #ax1.set_xlabel('x', fontsize=20)
 ax3.set_ylabel('Ys/(N/m)', fontsize=20)
 
 
 ax4.bar(x, y2, color=colors, lw=2, alpha=0.8)
-ax4.format(fontsize=14)
+ax4.format(fontsize=18)
 #ax2.set_xlabel('x', fontsize=14)
 ax4.set_ylabel(r"c11/(N/m)", fontsize=20)
 
