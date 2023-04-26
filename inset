@@ -1,0 +1,38 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots(figsize=(8,6),dpi=100, constrained_layout=True)
+
+data = []
+with open('1.txt', 'r') as f:
+    for line in f:
+        row = [float(num) for num in line.strip().split('\t')]
+        data.append(row)
+
+arr = np.array(data)
+
+labels= ['SchNet(PT+FT)','DFT','origin ReaxFF','new ReaxFF']
+
+for i in range(4):
+    ax.plot(arr[:,0]*100,arr[:,i+1],linestyle='-', marker='o',linewidth=2,markersize=10, label=labels[i])
+
+ax.set_xlabel('at-% of Surfur', fontsize=20)
+ax.set_ylabel('Enthalpy of formation[kcal/mol*atom]', fontsize=20)
+ax.tick_params(axis='both', direction='in', length=4, width=1.2, labelsize=20)
+
+xrange = np.array([min(arr[:,0]*100), max(arr[:,0]*100)])
+xmargin = (xrange[1] - xrange[0]) * 0.05
+ax.set_xlim(xrange[0]-xmargin, xrange[1]+xmargin)
+ax.legend(ncol=1, loc='lower right', fontsize=14)
+
+axins = ax.inset_axes([0.1, 0.05, 0.35,0.35], transform=ax.transAxes)
+for i in range(4):
+    axins.plot(arr[:, 0]*100, arr[:, i+1], linestyle='-', marker='o',linewidth=2,markersize=10)
+
+axins.locator_params(axis='x', nbins=4)
+axins.set_xlim([50, 70])
+axins.set_ylim([-22,-15])
+axins.tick_params(axis='both', direction='in', length=4, width=1.2, labelsize=12)
+
+
+plt.show()
